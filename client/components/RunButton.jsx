@@ -31,9 +31,8 @@ const RunButton = props => {
         props.setDataPoints(dpc.dataPoints)
         props.setNestingDepth(dpc.nestingDepth)
         props.setEffectiveRuntime((myJson.extensions.runTime / 1000).toFixed(1))
-
-      });
-  };
+      });    
+  });
 
   return (
     <React.Fragment>
@@ -45,4 +44,5 @@ const RunButton = props => {
     </React.Fragment>
   )
 }
+
 export default RunButton;
