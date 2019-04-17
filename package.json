@@ -30,6 +30,7 @@
   },
   "homepage": "https://github.com/orpheus-gql/orpheus-gql-app#readme",
   "dependencies": {
+    "@teamaxolotl/orpheus": "^1.0.4",
     "axios": "^0.18.0",
     "babel-polyfill": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",

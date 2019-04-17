@@ -4,11 +4,11 @@ const schema = require('./schema/schema');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const NetworkConstructor = require('./orpheus/ping');
-const orpheusGQL = require('./orpheus')
-const orpheusContext = require('./orpheus/context');
-const orpheusExtension = require('./orpheus/extension');
+
 require('dotenv').config();
+
 const app = express();
+const orpheus = require('@teamaxolotl/orpheus')
 
 // allow cross-origin requests
 app.use(cors());
@@ -25,13 +25,13 @@ mongoose.connection.once('open', () => {
 app.use('/graphql', graphqlHTTP(request => {
   return {
     schema,
-    context: orpheusContext(),
+    context: orpheus.context(),
     graphiql: true, // set this to be true so we can use graphiql on our local host
-    extensions: orpheusExtension
+    extensions: orpheus.extension
   }
 }));
 
-app.get('/orpheus', orpheusGQL);
+app.get('/orpheus', orpheus.config(3500, '/graphql'));
 
 app.listen(3500, () => {
   console.log('now listening for requests on port 3500')
